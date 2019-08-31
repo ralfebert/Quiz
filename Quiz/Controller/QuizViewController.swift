@@ -13,6 +13,9 @@ class QuizViewController: UIViewController {
 
     // MARK: - Zustand
 
+    var question = Country.allCountries[0]
+    var answers = [String]()
+
     // MARK: - Lebenszyklus
 
     override func viewDidLoad() {
@@ -29,13 +32,27 @@ class QuizViewController: UIViewController {
 
     func generateQuestion() {
         let allCountries = Country.allCountries
+        let country = allCountries.randomElement()!
+        let correctAnswer = country.capital
 
-        // TODO: Implementiere generateQuestion so dass eine Frage "Was ist die Hauptstadt von <Land>?" und vier Antwortmöglichkeiten generiert werden und als ViewController-Eigenschaften unter Zustand abgelegt werden
-
+        var answers = Array(allCountries.map { $0.capital }.shuffled().prefix(4))
+        if !answers.contains(correctAnswer) {
+            answers[answers.indices.randomElement()!] = correctAnswer
+        }
+        self.question = country
+        self.answers = answers
     }
 
     func showQuestion() {
-        // TODO: Implementiere showQuestion so, dass die Frage angezeigt wird
+        self.questionLabel.text = "Wie heißt die Hauptstadt von \(self.question.name)?"
+        precondition(self.answers.count == self.answerButtons.count)
+        for (i, answer) in self.answers.enumerated() {
+            let answerButton = self.answerButtons[i]
+            answerButton.setTitle(answer, for: .normal)
+            answerButton.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
+            answerButton.isUserInteractionEnabled = true
+        }
+        self.showNextQuestionButton.isHidden = true
     }
 
     // MARK: - Antwort
@@ -45,7 +62,20 @@ class QuizViewController: UIViewController {
     }
 
     func showAnswer(answer: String) {
-        // TODO: Implementiere showAnswer so, dass die richtige und ggf. falsche Antwort farblich hervorgehoben wird
+        let correctAnswer = self.question.capital
+        let correct = answer == correctAnswer
+        let correctIndex = self.answers.firstIndex(of: correctAnswer)!
+        let correctButton = self.answerButtons[correctIndex]
+        correctButton.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        if !correct {
+            let wrongIndex = self.answers.firstIndex(of: answer)!
+            let wrongButton = self.answerButtons[wrongIndex]
+            wrongButton.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        }
+        for button in self.answerButtons {
+            button.isUserInteractionEnabled = false
+        }
+        self.showNextQuestionButton.isHidden = false
     }
 
 }
