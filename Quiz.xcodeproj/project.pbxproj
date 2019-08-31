@@ -13,6 +13,8 @@
 		808A9C034950AE9E4D0B9FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D87FF0853E82D9DD58FE101 /* Assets.xcassets */; };
 		A3C359D3FB57C364E2ED0872 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B74C911A1A387CC91397F8E /* Main.storyboard */; };
 		BFBE1A94231A92E700E518AE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BFBE1A93231A92E700E518AE /* README.md */; };
+		BFBE1A96231AB85500E518AE /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE1A95231AB85500E518AE /* QuizQuestion.swift */; };
+		BFBE1A98231AB88F00E518AE /* QuizQuestion+Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE1A97231AB88F00E518AE /* QuizQuestion+Country.swift */; };
 		CBF386E11EA81897539717CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399999498521A8C3B2D5FB50 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,8 @@
 		9D87FF0853E82D9DD58FE101 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA3951E32375990252A7A9D6 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		BFBE1A93231A92E700E518AE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BFBE1A95231AB85500E518AE /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
+		BFBE1A97231AB88F00E518AE /* QuizQuestion+Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizQuestion+Country.swift"; sourceTree = "<group>"; };
 		CEEF01103DF21C3F60C6F6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0603EA76EA5DC6F5FEC1FAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +45,8 @@
 			isa = PBXGroup;
 			children = (
 				5AAB6449E691BF95C2464BFC /* Country.swift */,
+				BFBE1A95231AB85500E518AE /* QuizQuestion.swift */,
+				BFBE1A97231AB88F00E518AE /* QuizQuestion+Country.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,7 +170,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3777713EC5D497B6CCBA838C /* Country.swift in Sources */,
+				BFBE1A98231AB88F00E518AE /* QuizQuestion+Country.swift in Sources */,
 				07FAE72C2030BE754F698080 /* QuizAppDelegate.swift in Sources */,
+				BFBE1A96231AB85500E518AE /* QuizQuestion.swift in Sources */,
 				623E0F8A402E8FFFFD3CB395 /* QuizViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
