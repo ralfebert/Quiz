@@ -17,11 +17,20 @@ class QuizViewController: UIViewController {
         case empty
         case question(question: QuizQuestion)
         case answered(question: QuizQuestion, answer: String)
+
+        mutating func answer(_ answer: String) {
+            switch self {
+                case let .question(question):
+                    self = .answered(question: question, answer: answer)
+                default:
+                    fatalError("answerButtonTapped in state \(self) is invalid.")
+            }
+        }
     }
 
     var state = QuizState.empty {
         didSet {
-            self.updateView()
+            self.view.setNeedsLayout()
         }
     }
 
@@ -34,7 +43,9 @@ class QuizViewController: UIViewController {
 
     // MARK: - Zustand -> View
 
-    func updateView() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
         switch self.state {
             case .empty:
                 fatalError("Keine Frage gesetzt")
@@ -66,12 +77,7 @@ class QuizViewController: UIViewController {
     // MARK: - Antwort
 
     @IBAction func answerButtonTapped(sender: UIButton) {
-        switch self.state {
-            case let .question(question):
-                self.state = .answered(question: question, answer: sender.title(for: .normal)!)
-            default:
-                fatalError("answerButtonTapped in state \(self.state) is invalid.")
-        }
+        self.state.answer(sender.title(for: .normal)!)
     }
 
     func showAnswer(question: QuizQuestion, answer: String) {
