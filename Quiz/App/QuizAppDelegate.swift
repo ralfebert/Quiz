@@ -1,4 +1,5 @@
-// © 2019 Ralf Ebert — Quiz
+// © 2019 Ralf Ebert — iOS Example Project: Quiz
+// License: https://opensource.org/licenses/MIT
 
 import UIKit
 

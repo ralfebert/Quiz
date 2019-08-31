@@ -2,7 +2,7 @@ project:
 	xcodegen
 
 format:
-	swiftformat --header "© 2019 Ralf Ebert — Quiz" --swiftversion 5 --indentcase true --stripunusedargs unnamed-only --self insert --disable blankLinesAtStartOfScope,blankLinesAtEndOfScope .
+	swiftformat --header "© 2019 Ralf Ebert — iOS Example Project: Quiz\nLicense: https://opensource.org/licenses/MIT" --swiftversion 5.1 --indentcase true --stripunusedargs unnamed-only --self insert --disable blankLinesAtStartOfScope,blankLinesAtEndOfScope .
 
 assets:
 	# export icon
