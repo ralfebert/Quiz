@@ -13,7 +13,17 @@ class QuizViewController: UIViewController {
 
     // MARK: - Zustand
 
-    var question: QuizQuestion?
+    enum QuizState {
+        case empty
+        case question(question: QuizQuestion)
+        case answered(question: QuizQuestion, answer: String)
+    }
+
+    var state = QuizState.empty {
+        didSet {
+            self.updateView()
+        }
+    }
 
     // MARK: - Lebenszyklus
 
@@ -22,17 +32,26 @@ class QuizViewController: UIViewController {
         self.showNextQuestion()
     }
 
+    // MARK: - Zustand -> View
+
+    func updateView() {
+        switch self.state {
+            case .empty:
+                fatalError("Keine Frage gesetzt")
+            case let .question(question):
+                self.showQuestion(question: question)
+            case let .answered(question, answer):
+                self.showAnswer(question: question, answer: answer)
+        }
+    }
+
     // MARK: - Frage
 
     @IBAction func showNextQuestion() {
-        self.question = QuizQuestion.generateCountryQuestion()
-        self.showQuestion()
+        self.state = .question(question: QuizQuestion.generateCountryQuestion())
     }
 
-    func showQuestion() {
-        guard let question = question else {
-            fatalError("Ungültiger Zustand: Keine Frage gesetzt")
-        }
+    func showQuestion(question: QuizQuestion) {
         self.questionLabel.text = question.text
         precondition(question.answers.count == self.answerButtons.count)
         for (i, answer) in question.answers.enumerated() {
@@ -47,13 +66,15 @@ class QuizViewController: UIViewController {
     // MARK: - Antwort
 
     @IBAction func answerButtonTapped(sender: UIButton) {
-        self.showAnswer(answer: sender.title(for: .normal)!)
+        switch self.state {
+            case let .question(question):
+                self.state = .answered(question: question, answer: sender.title(for: .normal)!)
+            default:
+                fatalError("answerButtonTapped in state \(self.state) is invalid.")
+        }
     }
 
-    func showAnswer(answer: String) {
-        guard let question = question else {
-            fatalError("Ungültiger Zustand: Keine Frage gesetzt")
-        }
+    func showAnswer(question: QuizQuestion, answer: String) {
         let correctAnswer = question.correctAnswer
         let correct = answer == correctAnswer
         let correctIndex = question.answers.firstIndex(of: correctAnswer)!
