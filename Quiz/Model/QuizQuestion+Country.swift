@@ -6,19 +6,21 @@ import Foundation
 extension QuizQuestion {
 
     static func generateCountryQuestion() -> QuizQuestion {
-        let allCountries = Country.allCountries
-        let country = allCountries.randomElement()!
-        let correctAnswer = country.capital
+        let countries = Country.allCountries
 
-        var answers = Array(allCountries.map { $0.capital }.shuffled().prefix(4))
-        if !answers.contains(correctAnswer) {
-            answers[answers.indices.randomElement()!] = correctAnswer
+        let country = countries.randomElement()!
+
+        var capitals = countries.map { $0.capital }.shuffled().prefix(4)
+
+        if !capitals.contains(country.capital) {
+            capitals[0] = country.capital
+            capitals.shuffle()
         }
 
         return QuizQuestion(
             text: "Wie heißt die Hauptstadt von \(country.name)?",
-            answers: answers,
-            correctAnswer: correctAnswer
+            answers: Array(capitals),
+            correctAnswer: country.capital
         )
     }
 
