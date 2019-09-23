@@ -17,15 +17,6 @@ class QuizViewController: UIViewController {
         case empty
         case question(question: QuizQuestion)
         case answered(question: QuizQuestion, answer: String)
-
-        mutating func answer(_ answer: String) {
-            switch self {
-                case let .question(question):
-                    self = .answered(question: question, answer: answer)
-                default:
-                    fatalError("answerButtonTapped in state \(self) is invalid.")
-            }
-        }
     }
 
     var state = QuizState.empty {
@@ -88,7 +79,13 @@ class QuizViewController: UIViewController {
     // MARK: - Antwort
 
     @IBAction func answerButtonTapped(sender: UIButton) {
-        self.state.answer(sender.title(for: .normal)!)
+        let answer = sender.title(for: .normal)!
+        switch self.state {
+            case let .question(question):
+                self.state = .answered(question: question, answer: answer)
+            default:
+                fatalError("answerButtonTapped in state \(self) is invalid.")
+        }
     }
 
 }
