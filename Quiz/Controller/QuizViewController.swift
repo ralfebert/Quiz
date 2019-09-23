@@ -13,28 +13,29 @@ class QuizViewController: UIViewController {
 
     // MARK: - Zustand
 
-    struct QuizViewModel {
+    struct QuizRound {
 
-        var state = QuizState.empty
+        var state: QuizState
+        var question: QuizQuestion
+
+        init() {
+            self.question = QuizQuestion.generateCountryQuestion()
+            self.state = .question
+        }
 
         enum QuizState {
-            case empty
-            case question(question: QuizQuestion)
-            case answered(question: QuizQuestion, answer: String)
+            case question
+            case answered(answer: String)
         }
 
         mutating func answered(_ answer: String) {
             switch self.state {
-                case let .question(question):
-                    self.state = .answered(question: question, answer: answer)
+                case .question:
+                    self.state = .answered(answer: answer)
                 default:
                     fatalError("answered in state \(self) is invalid.")
             }
 
-        }
-
-        mutating func showNextQuestion() {
-            self.state = .question(question: QuizQuestion.generateCountryQuestion())
         }
 
         var isAnswered: Bool {
@@ -46,7 +47,7 @@ class QuizViewController: UIViewController {
 
     }
 
-    var model = QuizViewModel() {
+    var model = QuizRound() {
         didSet {
             self.view.setNeedsLayout()
         }
@@ -64,30 +65,31 @@ class QuizViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
-        switch self.model.state {
-            case .empty:
-                fatalError("Keine Frage gesetzt")
+        let question = self.model.question
 
-            case let .question(question):
-                self.questionLabel.text = question.text
-                precondition(question.answers.count == self.answerButtons.count)
-                for (answerButton, answer) in zip(self.answerButtons, question.answers) {
-                    answerButton.title = answer
-                    answerButton.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
-                }
+        self.questionLabel.text = question.text
 
-            case let .answered(question, answer):
-                let correctAnswer = question.correctAnswer
-                let correct = answer == correctAnswer
-                let correctIndex = question.answers.firstIndex(of: correctAnswer)!
-                let correctButton = self.answerButtons[correctIndex]
-                correctButton.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-                if !correct {
-                    let wrongIndex = question.answers.firstIndex(of: answer)!
-                    let wrongButton = self.answerButtons[wrongIndex]
-                    wrongButton.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-                }
+        // Buttons aktualisieren
+        precondition(question.answers.count == self.answerButtons.count)
+        for (button, answer) in zip(self.answerButtons, question.answers) {
+            button.title = answer
+            button.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
         }
+
+        // Farbige Hervorhebung korrekte/falsche Antwort wenn die Frage beantwortet wurde
+        if case let .answered(answer) = self.model.state {
+            let correctAnswer = question.correctAnswer
+            let correct = answer == correctAnswer
+            let correctIndex = question.answers.firstIndex(of: correctAnswer)!
+            let correctButton = self.answerButtons[correctIndex]
+            correctButton.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+            if !correct {
+                let wrongIndex = question.answers.firstIndex(of: answer)!
+                let wrongButton = self.answerButtons[wrongIndex]
+                wrongButton.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            }
+        }
+
         self.showNextQuestionButton.isVisible = self.model.isAnswered
         for button in self.answerButtons {
             button.isUserInteractionEnabled = !self.model.isAnswered
@@ -97,7 +99,7 @@ class QuizViewController: UIViewController {
     // MARK: - Frage
 
     @IBAction func showNextQuestion() {
-        self.model.showNextQuestion()
+        self.model = QuizRound()
     }
 
     // MARK: - Antwort
