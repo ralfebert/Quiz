@@ -8,32 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		07FAE72C2030BE754F698080 /* QuizAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296C7102D1DE16338481D4E2 /* QuizAppDelegate.swift */; };
+		371C92278DBC142A423C1BFF /* QuizRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962E6ACA3421607A07D96A /* QuizRound.swift */; };
 		3777713EC5D497B6CCBA838C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAB6449E691BF95C2464BFC /* Country.swift */; };
+		382D050B3904E72BB444B389 /* QuizQuestion+Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAF52A9E29982F293618B01 /* QuizQuestion+Country.swift */; };
 		623E0F8A402E8FFFFD3CB395 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3951E32375990252A7A9D6 /* QuizViewController.swift */; };
 		808A9C034950AE9E4D0B9FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D87FF0853E82D9DD58FE101 /* Assets.xcassets */; };
+		825FD5D53FA53109DE1E6E54 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A055D9423B76F7CC3BA8204 /* QuizQuestion.swift */; };
 		A3C359D3FB57C364E2ED0872 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B74C911A1A387CC91397F8E /* Main.storyboard */; };
-		BFBE1A94231A92E700E518AE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BFBE1A93231A92E700E518AE /* README.md */; };
-		BFBE1A96231AB85500E518AE /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE1A95231AB85500E518AE /* QuizQuestion.swift */; };
-		BFBE1A98231AB88F00E518AE /* QuizQuestion+Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE1A97231AB88F00E518AE /* QuizQuestion+Country.swift */; };
-		BFE122392339071C00BEAC18 /* UIButton+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE122382339071C00BEAC18 /* UIButton+Title.swift */; };
-		BFE1223B2339078E00BEAC18 /* UIView+IsVisible.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE1223A2339078E00BEAC18 /* UIView+IsVisible.swift */; };
 		CBF386E11EA81897539717CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399999498521A8C3B2D5FB50 /* LaunchScreen.storyboard */; };
+		CFCDA4CE2804AB7BDD4C119F /* UIButton+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86A8152AC97DD128AE5052 /* UIButton+Title.swift */; };
+		FD046292AC39757D3FF5F787 /* UIView+IsVisible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE743895C5EA5D86C69464B /* UIView+IsVisible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A055D9423B76F7CC3BA8204 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
 		296C7102D1DE16338481D4E2 /* QuizAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppDelegate.swift; sourceTree = "<group>"; };
+		3A86A8152AC97DD128AE5052 /* UIButton+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Title.swift"; sourceTree = "<group>"; };
 		4F124CA11753F825FDB5797D /* Quiz.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AAB6449E691BF95C2464BFC /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		7B74C911A1A387CC91397F8E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9D87FF0853E82D9DD58FE101 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AEE743895C5EA5D86C69464B /* UIView+IsVisible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+IsVisible.swift"; sourceTree = "<group>"; };
 		BA3951E32375990252A7A9D6 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
-		BFBE1A93231A92E700E518AE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BFBE1A95231AB85500E518AE /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
-		BFBE1A97231AB88F00E518AE /* QuizQuestion+Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizQuestion+Country.swift"; sourceTree = "<group>"; };
-		BFE122382339071C00BEAC18 /* UIButton+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Title.swift"; sourceTree = "<group>"; };
-		BFE1223A2339078E00BEAC18 /* UIView+IsVisible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+IsVisible.swift"; sourceTree = "<group>"; };
+		CAAF52A9E29982F293618B01 /* QuizQuestion+Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizQuestion+Country.swift"; sourceTree = "<group>"; };
 		CEEF01103DF21C3F60C6F6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0603EA76EA5DC6F5FEC1FAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E4962E6ACA3421607A07D96A /* QuizRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRound.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -49,8 +49,9 @@
 			isa = PBXGroup;
 			children = (
 				5AAB6449E691BF95C2464BFC /* Country.swift */,
-				BFBE1A95231AB85500E518AE /* QuizQuestion.swift */,
-				BFBE1A97231AB88F00E518AE /* QuizQuestion+Country.swift */,
+				1A055D9423B76F7CC3BA8204 /* QuizQuestion.swift */,
+				CAAF52A9E29982F293618B01 /* QuizQuestion+Country.swift */,
+				E4962E6ACA3421607A07D96A /* QuizRound.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -97,8 +98,8 @@
 		503384602AF9EAEFC6D52130 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				BFE122382339071C00BEAC18 /* UIButton+Title.swift */,
-				BFE1223A2339078E00BEAC18 /* UIView+IsVisible.swift */,
+				3A86A8152AC97DD128AE5052 /* UIButton+Title.swift */,
+				AEE743895C5EA5D86C69464B /* UIView+IsVisible.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -106,7 +107,6 @@
 		C6DC6BA7B58FEF62F26CA2A0 = {
 			isa = PBXGroup;
 			children = (
-				BFBE1A93231A92E700E518AE /* README.md */,
 				2B5A57E10CAFD52DF7596857 /* Quiz */,
 				08D37F7A0BE90D92581AC36A /* Products */,
 			);
@@ -144,7 +144,6 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = C6DC6BA7B58FEF62F26CA2A0;
@@ -163,7 +162,6 @@
 			files = (
 				808A9C034950AE9E4D0B9FE1 /* Assets.xcassets in Resources */,
 				CBF386E11EA81897539717CD /* LaunchScreen.storyboard in Resources */,
-				BFBE1A94231A92E700E518AE /* README.md in Resources */,
 				A3C359D3FB57C364E2ED0872 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,12 +174,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3777713EC5D497B6CCBA838C /* Country.swift in Sources */,
-				BFBE1A98231AB88F00E518AE /* QuizQuestion+Country.swift in Sources */,
-				BFE122392339071C00BEAC18 /* UIButton+Title.swift in Sources */,
-				BFE1223B2339078E00BEAC18 /* UIView+IsVisible.swift in Sources */,
 				07FAE72C2030BE754F698080 /* QuizAppDelegate.swift in Sources */,
-				BFBE1A96231AB85500E518AE /* QuizQuestion.swift in Sources */,
+				382D050B3904E72BB444B389 /* QuizQuestion+Country.swift in Sources */,
+				825FD5D53FA53109DE1E6E54 /* QuizQuestion.swift in Sources */,
+				371C92278DBC142A423C1BFF /* QuizRound.swift in Sources */,
 				623E0F8A402E8FFFFD3CB395 /* QuizViewController.swift in Sources */,
+				CFCDA4CE2804AB7BDD4C119F /* UIButton+Title.swift in Sources */,
+				FD046292AC39757D3FF5F787 /* UIView+IsVisible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,10 +204,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Quiz/App/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Quiz;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -222,10 +218,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Quiz/App/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Quiz;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
