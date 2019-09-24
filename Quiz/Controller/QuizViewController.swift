@@ -13,7 +13,7 @@ class QuizViewController: UIViewController {
 
     // MARK: - Zustand
 
-    var model = QuizRound() {
+    var round = QuizRound() {
         didSet {
             self.view.setNeedsLayout()
         }
@@ -31,7 +31,7 @@ class QuizViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
-        let question = self.model.question
+        let question = self.round.question
 
         self.questionLabel.text = question.text
 
@@ -39,40 +39,43 @@ class QuizViewController: UIViewController {
         precondition(question.answers.count == self.answerButtons.count)
         for (button, answer) in zip(self.answerButtons, question.answers) {
             button.title = answer
-            button.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
+            button.backgroundColor = self.round.colorFor(answer: answer)
         }
 
-        // Farbige Hervorhebung korrekte/falsche Antwort wenn die Frage beantwortet wurde
-        if case let .answered(answer) = self.model.state {
-            let correctAnswer = question.correctAnswer
-            let correct = answer == correctAnswer
-            let correctIndex = question.answers.firstIndex(of: correctAnswer)!
-            let correctButton = self.answerButtons[correctIndex]
-            correctButton.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-            if !correct {
-                let wrongIndex = question.answers.firstIndex(of: answer)!
-                let wrongButton = self.answerButtons[wrongIndex]
-                wrongButton.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-            }
-        }
-
-        self.showNextQuestionButton.isVisible = self.model.isAnswered
+        // Buttons je nach Zustand deaktivieren/ausblenden
+        self.showNextQuestionButton.isVisible = self.round.isAnswered
         for button in self.answerButtons {
-            button.isUserInteractionEnabled = !self.model.isAnswered
+            button.isUserInteractionEnabled = !self.round.isAnswered
         }
     }
 
     // MARK: - Frage
 
     @IBAction func showNextQuestion() {
-        self.model = QuizRound()
+        self.round = QuizRound()
     }
 
     // MARK: - Antwort
 
     @IBAction func answerButtonTapped(sender: UIButton) {
         let answer = sender.title(for: .normal)!
-        self.model.answered(answer)
+        self.round.answered(answer)
+    }
+
+}
+
+private extension QuizRound {
+
+    func colorFor(answer: String) -> UIColor {
+        if case let .answered(givenAnswer) = self.state {
+            if self.question.correctAnswer == answer {
+                return #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+            }
+            if givenAnswer == answer {
+                return #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            }
+        }
+        return UIColor(white: 0.95, alpha: 1)
     }
 
 }
