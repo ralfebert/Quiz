@@ -25,10 +25,12 @@ struct QuizQuestionView: View {
                         }
                     },
                     label: {
-                        Text(answer).padding(15)
+                        Text(answer)
+                            .padding(15)
+                            .frame(maxWidth: .infinity)
                     }
                 )
-                .frame(maxWidth: .infinity)
+                .disabled(self.round.isAnswered)
                 .background(self.round.colorFor(answer: answer))
                 .cornerRadius(10)
             }
@@ -54,12 +56,13 @@ private extension QuizRound {
     func colorFor(answer: String) -> Color {
         if case let .answered(givenAnswer) = self.state {
             if self.question.correctAnswer == answer {
-                return .green
+                return Color(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1))
             }
             if givenAnswer == answer {
-                return .orange
+                return Color(#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
             }
         }
+
         return Color(white: 0.95)
     }
 
